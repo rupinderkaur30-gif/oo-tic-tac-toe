@@ -15,39 +15,42 @@
             [0,4,8],
             [2,4,6]
         ]
+        
         def display_board
             puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
             puts "-----------"
             puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
             puts "-----------"
             puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
-          end   
+          end 
+
           def input_to_index(input)
            index =  input.to_i - 1
           end
+
         def move (index , value)
-       
-          @board[index] = value
+        @board[index] = value
           #binding.pry
         end
+
         def position_taken?(index)
           #binding.pry
          if @board[index].nil? || @board[index] == " "
-    
-          false
+         false
          else 
           true
          end
         end
+
       def valid_move?(input)
         #binding.pry
         if position_taken?(input)==false && input.between?(0,8)
-  
-          true
+         true
         else
           false
         end
       end
+
       def turn
         puts "enter between (1,9)"
       input = gets.strip
@@ -59,6 +62,7 @@
         turn
     end
   end
+
   def turn_count
     count = 0
     @board.each do | input| 
@@ -77,6 +81,7 @@
     end
     #binding.pry
   end
+
  def won? 
   WIN_COMBINATIONS.each do  |index|
     #binding.pry
@@ -91,9 +96,11 @@
   return false
   #
 end
+
 def full?
    @board.all? {|index| index == "X" || index == "O"}
 end
+
 def draw?
     !won? && full? 
 end
@@ -114,6 +121,7 @@ def winner
      "O"
     end
  end
+
   def play
     until over?
       turn
